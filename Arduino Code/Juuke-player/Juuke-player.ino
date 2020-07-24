@@ -1,6 +1,6 @@
 /*
    Thanks to Original Author: ryand1011 (https://github.com/ryand1011)
-   Edited by Ananords -
+   Edited by Ananords - https://github.com/ananords
 
    See: https://github.com/miguelbalboa/rfid/tree/master/examples/rfid_write_personal_data
 
