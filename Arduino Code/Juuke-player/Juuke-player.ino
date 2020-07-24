@@ -1,7 +1,9 @@
 /*
    Thanks to Original Author: ryand1011 (https://github.com/ryand1011)
    Edited by Ananords -
+
    See: https://github.com/miguelbalboa/rfid/tree/master/examples/rfid_write_personal_data
+
    Uses MIFARE RFID card using RFID-RC522 reader
    Uses MFRC522 - Library
    -----------------------------------------------------------------------------------------
@@ -14,7 +16,10 @@
    SPI MOSI    MOSI         11 / ICSP-4   51        D11        ICSP-4           16
    SPI MISO    MISO         12 / ICSP-1   50        D12        ICSP-1           14
    SPI SCK     SCK          13 / ICSP-3   52        D13        ICSP-3           15
-  PS: IF THE PLAYER FAILS TO START WHEN THE SERIAL MONITOR IS NOT OPEN, TRY TO COMMENT OUT Serial.begin(115200); 
+
+
+
+  PS: IF THE PLAYER FAILS TO START WHEN THE SERIAL MONITOR IS NOT OPEN, TRY TO COMMENT OUT Serial.begin(115200);
 */
 
 #include <SPI.h>
@@ -28,6 +33,10 @@
 
 const int playPauseButton = 4;
 const int shuffleButton = 3;
+const byte volumePot = A0;
+int prevVolume; 
+
+byte volumeLevel = 0; //variable for holding volume level
 
 boolean isPlaying = false;
 
@@ -64,8 +73,10 @@ void setup() {
   }
   Serial.println(F("DFPlayer Mini online. Place card on reader to play a spesific song"));
 
-  myDFPlayer.volume(15);  //Set volume value. From 0 to 30
-
+  //myDFPlayer.volume(15);  //Set volume value. From 0 to 30 
+  volumeLevel = map(analogRead(volumePot), 0, 1023, 0, 30);   //scale the pot value and volume level
+  myDFPlayer.volume(volumeLevel);
+  prevVolume = volumeLevel;
 
   //----Set different EQ----
   myDFPlayer.EQ(DFPLAYER_EQ_NORMAL);
@@ -81,6 +92,16 @@ void setup() {
 
 //*****************************************************************************************//
 void loop() {
+
+
+  volumeLevel = map(analogRead(volumePot), 0, 1023, 0, 30);   //scale the pot value and volume level
+
+
+  if (prevVolume != volumeLevel){
+  myDFPlayer.volume(volumeLevel);
+  }
+    prevVolume = volumeLevel;
+
 
   // Prepare key - all keys are set to FFFFFFFFFFFFh at chip delivery from the factory.
   MFRC522::MIFARE_Key key;
@@ -174,9 +195,6 @@ void loop() {
 
     //PLAY SONG
 
-    //if (isPlaying == false){
-    // myDFPlayer.start();
-    // }
     myDFPlayer.play(number.toInt());
     isPlaying = true;
 
@@ -192,7 +210,3 @@ void loop() {
     mfrc522.PCD_StopCrypto1();
   }
 }
-
-
-
-//*****************************************************************************************//
