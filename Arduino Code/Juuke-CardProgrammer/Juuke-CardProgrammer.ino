@@ -1,4 +1,7 @@
 /*
+
+By Ananords - https://github.com/ananords
+
    Write song number data to a MIFARE RFID card using a RFID-RC522 reader
    Uses MFRC522 - Library to use ARDUINO RFID MODULE KIT 13.56 MHZ WITH TAGS SPI W AND R BY COOQROBOT.
    -----------------------------------------------------------------------------------------
