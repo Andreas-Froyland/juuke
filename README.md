@@ -27,7 +27,7 @@ Arduino UNO DIY Shield (http://s.click.aliexpress.com/e/_dV1jyWq ) (https://amzn
 
 RC522 - Buy 2 to be sure, some of them arrive broken (http://s.click.aliexpress.com/e/_dV3LvYe ) (https://amzn.to/3hLfXGy )
 
-RFID Cards (http://s.click.aliexpress.com/e/_d7mhotk ) (https://amzn.to/311z0G2 )
+RFID Cards (http://s.click.aliexpress.com/e/_d7mhotk ) (https://amzn.to/3lyCjOm )
 
 AUX Stereo Jack (http://s.click.aliexpress.com/e/_BfhqoiXs ) (https://amzn.to/39EiCiC )
 
