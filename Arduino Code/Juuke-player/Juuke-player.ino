@@ -96,11 +96,13 @@ void loop() {
 
   volumeLevel = map(analogRead(volumePot), 0, 1023, 0, 30);   //scale the pot value and volume level
 
-
-  if (prevVolume != volumeLevel){
+if (volumeLevel - prevVolume >= 3 || prevVolume - volumeLevel >= 3 ){
   myDFPlayer.volume(volumeLevel);
-  }
-    prevVolume = volumeLevel;
+  Serial.println(volumeLevel);  
+   prevVolume = volumeLevel;
+  delay(1);
+}
+
 
 
   // Prepare key - all keys are set to FFFFFFFFFFFFh at chip delivery from the factory.
