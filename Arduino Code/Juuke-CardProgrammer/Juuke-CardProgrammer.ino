@@ -123,7 +123,7 @@ void autoModus() {
 
 
     len = sprintf(buffer, "%d", currentNumber);
-    for (byte i = len; i < 30; i++) buffer[i] = ' ';
+    for (byte i = len; i < sizeof(buffer); i++) buffer[i] = ' ';
 
 
     //Serial.println(F("Authenticating using key A..."));
@@ -192,7 +192,7 @@ void manualModus() {
   // Ask for song number data
   Serial.println(F("Type any number and hit send/enter"));
   len = Serial.readBytesUntil('\n', (char *) buffer, 30) ; // read number from serial
-  for (byte i = len; i < 30; i++) buffer[i] = ' ';     // pad with spaces
+  for (byte i = len; i < sizeof(buffer); i++) buffer[i] = ' ';     // pad with spaces
 
   block = 1;
   //Serial.println(F("Authenticating using key A..."));
